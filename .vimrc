@@ -1,26 +1,9 @@
+let mapleader=';'
+
 if filereadable(expand("~/.vimrc.plugins"))
     source ~/.vimrc.plugins
 endif
 
-" Solarized
-syntax enable
-set background=dark
-colorscheme solarized
-
-" NerdTree
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-map <C-e> :NERDTreeToggle<CR>
-let NERDTreeShowBookmarks=1
-let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
-let NERDTreeChDirMode=0
-let NERDTreeQuitOnOpen=0
-let NERDTreeMouseMode=2
-let NERDTreeShowHidden=1
-let NERDTreeKeepTreeInNewTab=1
-let g:nerdtree_tabs_open_on_gui_startup=0
-
-set backspace=indent,eol,start  " Backspace for dummies
 set linespace=0                 " No extra spaces between rows
 set number                      " Line numbers on
 set showmatch                   " Show matching brackets/parenthesis
@@ -68,4 +51,4 @@ set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic white
 
 set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
 
-let mapleader = ','
+filetype on
