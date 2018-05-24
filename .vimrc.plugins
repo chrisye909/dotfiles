@@ -21,6 +21,14 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'plasticboy/vim-markdown'
 Plug 'elzr/vim-json'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'w0rp/ale'
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-indent'
+Plug 'kana/vim-textobj-syntax'
+Plug 'kana/vim-textobj-function'
+Plug 'sgur/vim-textobj-parameter'
+Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 
 call plug#end()
 

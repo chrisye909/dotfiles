@@ -4,6 +4,8 @@ if filereadable(expand("~/.vimrc.plugins"))
     source ~/.vimrc.plugins
 endif
 
+set clipboard=unnamed,autoselect " 复制内容到系统剪贴板
+set guioptions+=a
 set tags=./.tags;,.tags
 set linespace=0                 " No extra spaces between rows
 set number                      " Line numbers on
@@ -53,3 +55,9 @@ set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic white
 set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
 
 filetype on
+
+" 打开文件恢复光标位置
+autocmd BufReadPost *
+    \ if line("'\"") > 1 && line("'\"") <= line("$") |
+    \   exe "normal! g`\"" |
+    \ endif
