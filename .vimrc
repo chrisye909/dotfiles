@@ -4,6 +4,7 @@ if filereadable(expand("~/.vimrc.plugins"))
     source ~/.vimrc.plugins
 endif
 
+set tags=./.tags;,.tags
 set linespace=0                 " No extra spaces between rows
 set number                      " Line numbers on
 set showmatch                   " Show matching brackets/parenthesis
