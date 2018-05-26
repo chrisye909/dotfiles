@@ -66,6 +66,18 @@ set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
 
 filetype on
 
+" leader + number 切换 Tab
+noremap <silent><leader>1 :tabn 1<cr>
+noremap <silent><leader>2 :tabn 2<cr>
+noremap <silent><leader>3 :tabn 3<cr>
+noremap <silent><leader>4 :tabn 4<cr>
+noremap <silent><leader>5 :tabn 5<cr>
+noremap <silent><leader>6 :tabn 6<cr>
+noremap <silent><leader>7 :tabn 7<cr>
+noremap <silent><leader>8 :tabn 8<cr>
+noremap <silent><leader>9 :tabn 9<cr>
+noremap <silent><leader>0 :tabn 10<cr>
+
 " 打开文件恢复光标位置
 autocmd BufReadPost *
     \ if line("'\"") > 1 && line("'\"") <= line("$") |
@@ -98,17 +110,19 @@ Plug 'kana/vim-textobj-syntax'
 Plug 'kana/vim-textobj-function'
 Plug 'sgur/vim-textobj-parameter'
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
-" Plug 'shawncplus/phpcomplete.vim'
-" Plug 'arnaud-lb/vim-php-namespace'
+Plug 'shawncplus/phpcomplete.vim'
 " Plug 'ervandew/supertab'
-" Plug 'spf13/piv'
+Plug 'spf13/piv'
 
 call plug#end()
 
 " NerdTree
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+" open NERDTree automatically when vim starts up on opening a directory
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+" close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 map <C-e> :NERDTreeToggle<CR>
 let NERDTreeShowBookmarks=1
 let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$', '^\.phpcomplete_extended/*', '.tags']
@@ -122,10 +136,11 @@ let g:nerdtree_tabs_open_on_gui_startup=0
 "
 
 " LeaderF
-let g:Lf_ShortcutF = '<c-p>'
-let g:Lf_ShortcutB = '<m-n>'
-noremap <C-m> :LeaderfMruCwd<cr>
-noremap <m-p> :LeaderfFunction<cr>
+" let g:Lf_ShortcutB = '<m-n>'
+" noremap <C-m> :LeaderfMruCwd<cr>
+map <leader>m :LeaderfMruCwd<CR>
+map <leader>t :LeaderfFunction<CR>
+map <C-p> :LeaderfFile<CR>
 let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': '' }
 let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git']
 let g:Lf_WorkingDirectoryMode = 'Ac'
