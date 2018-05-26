@@ -1,9 +1,5 @@
 let mapleader=';'
 
-if filereadable(expand("~/.vimrc.plugins"))
-    source ~/.vimrc.plugins
-endif
-
 " 关闭警报声
 set noerrorbells
 set novisualbell
