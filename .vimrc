@@ -4,6 +4,20 @@ if filereadable(expand("~/.vimrc.plugins"))
     source ~/.vimrc.plugins
 endif
 
+" 关闭警报声
+set noerrorbells
+set novisualbell
+set t_vb=
+
+" 多行缩进
+xnoremap <  <gv
+xnoremap >  >gv
+
+" 命令行模式选择命令
+cnoremap <c-n> <down>
+cnoremap <c-p> <up>
+
+set cursorline
 set clipboard=unnamed,autoselect " 复制内容到系统剪贴板
 set guioptions+=a
 set tags=./.tags;,.tags
