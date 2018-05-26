@@ -90,6 +90,12 @@ autocmd BufReadPost *
 " https://vimawesome.com/
 call plug#begin('~/.vim/plugged')
 
+" php-document
+Plug 'tobyS/vmustache'
+Plug 'SirVer/ultisnips'
+Plug 'tobyS/pdv'
+
+" git diff
 Plug 'mhinz/vim-signify'
 Plug 'vim-airline/vim-airline'
 Plug 'easymotion/vim-easymotion'
@@ -115,7 +121,7 @@ Plug 'sgur/vim-textobj-parameter'
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 Plug 'shawncplus/phpcomplete.vim'
 Plug 'ervandew/supertab'
-Plug 'spf13/piv'
+Plug 'stanangeloff/php.vim'
 
 call plug#end()
 
@@ -195,3 +201,10 @@ let g:ale_sign_column_always = 1
 
 " vim-signify
 noremap <silent><leader>df :SignifyDiff<cr>
+
+" php.vim
+let g:php_syntax_extensions_enabled = ["bcmath", "bz2", "core", "curl", "date", "dom", "ereg", "gd", "gettext", "hash", "iconv", "json", "libxml", "mbstring", "mcrypt", "mhash", "mysql", "mysqli", "openssl", "pcre", "pdo", "pgsql", "phar", "reflection", "session", "simplexml", "soap", "sockets", "spl", "sqlite3", "standard", "tokenizer", "wddx", "xml", "xmlreader", "xmlwriter", "zip", "zlib"]
+
+" PHP documenter script bound to leader dc
+autocmd FileType php nnoremap <leader>dc :call pdv#DocumentWithSnip()<CR>
+let g:pdv_template_dir = $HOME ."/.vim/plugged/pdv/templates_snip"
