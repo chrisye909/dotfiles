@@ -5,6 +5,8 @@ set noerrorbells
 set novisualbell
 set t_vb=
 
+set signcolumn=yes
+
 " 多行缩进
 xnoremap <  <gv
 xnoremap >  >gv
@@ -77,6 +79,7 @@ noremap <silent><leader>7 :tabn 7<cr>
 noremap <silent><leader>8 :tabn 8<cr>
 noremap <silent><leader>9 :tabn 9<cr>
 noremap <silent><leader>0 :tabn 10<cr>
+noremap <silent><leader>tc :tabclose<CR>
 
 " 打开文件恢复光标位置
 autocmd BufReadPost *
@@ -87,13 +90,13 @@ autocmd BufReadPost *
 " https://vimawesome.com/
 call plug#begin('~/.vim/plugged')
 
+Plug 'mhinz/vim-signify'
 Plug 'vim-airline/vim-airline'
 Plug 'easymotion/vim-easymotion'
 Plug 'altercation/vim-colors-solarized'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'godlygeek/tabular'
-Plug 'airblade/vim-gitgutter'
 Plug 'Valloric/YouCompleteMe'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
@@ -140,24 +143,17 @@ let g:nerdtree_tabs_open_on_gui_startup=0
 " noremap <C-m> :LeaderfMruCwd<cr>
 map <leader>m :LeaderfMruCwd<CR>
 map <leader>t :LeaderfFunction<CR>
-map <C-p> :LeaderfFile<CR>
+let g:Lf_DefaultMode='Fuzzy'
+let g:Lf_ShortcutF = '<C-P>'
 let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': '' }
 let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git']
-let g:Lf_WorkingDirectoryMode = 'Ac'
 let g:Lf_WindowHeight = 0.20
 let g:Lf_CacheDirectory = expand('~/.vim/cache')
 let g:Lf_ShowRelativePath = 0
 let g:Lf_HideHelp = 1
 let g:Lf_StlColorscheme = 'powerline'
 let g:Lf_PreviewResult = {'Function':0}
-let g:Lf_NormalMap = {
-	\ "File":   [["<ESC>", ':exec g:Lf_py "fileExplManager.quit()"<CR>']],
-	\ "Buffer": [["<ESC>", ':exec g:Lf_py "bufExplManager.quit()"<CR>']],
-	\ "Mru":    [["<ESC>", ':exec g:Lf_py "mruExplManager.quit()"<CR>']],
-	\ "Tag":    [["<ESC>", ':exec g:Lf_py "tagExplManager.quit()"<CR>']],
-	\ "Function":    [["<ESC>", ':exec g:Lf_py "functionExplManager.quit()"<CR>']],
-	\ "Colorscheme":    [["<ESC>", ':exec g:Lf_py "colorschemeExplManager.quit()"<CR>']],
-	\ }
+let g:Lf_ShowHidden=1
 
 " Solarized
 syntax enable
@@ -172,8 +168,6 @@ let g:gutentags_cache_dir = s:vim_tags
 let g:gutentags_ctags_extra_args = ['-R']
 let g:gutentags_ctags_extra_args += ['--languages=php']
 let g:gutentags_ctags_extra_args += ['--php-kinds=ctifdn']
-let g:gutentags_ctags_extra_args += ['--exclude=*test*']
-let g:gutentags_ctags_extra_args += ['--exclude=vendor/*/vendor']
 let g:gutentags_ctags_extra_args += ['--fields=+aimS']
 
 if !isdirectory(s:vim_tags)
@@ -198,3 +192,6 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 
 " ale
 let g:ale_sign_column_always = 1
+
+" vim-signify
+noremap <silent><leader>df :SignifyDiff<cr>
