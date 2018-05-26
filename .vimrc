@@ -114,7 +114,7 @@ Plug 'kana/vim-textobj-function'
 Plug 'sgur/vim-textobj-parameter'
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 Plug 'shawncplus/phpcomplete.vim'
-" Plug 'ervandew/supertab'
+Plug 'ervandew/supertab'
 Plug 'spf13/piv'
 
 call plug#end()
