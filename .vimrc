@@ -122,6 +122,7 @@ Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 Plug 'shawncplus/phpcomplete.vim'
 Plug 'ervandew/supertab'
 Plug 'stanangeloff/php.vim'
+Plug 'mileszs/ack.vim'
 
 call plug#end()
 
